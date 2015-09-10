@@ -1,0 +1,11 @@
+class Workers < ActiveRecord::Migration
+  def change
+    create_table :workers do |t|
+      t.string :name
+      t.string :contact
+      t.boolean :status
+      t.integer :salary
+      t.timestams
+    end
+  end
+end

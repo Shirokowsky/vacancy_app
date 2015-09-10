@@ -1,0 +1,9 @@
+class Skills < ActiveRecord::Migration
+  def change
+    create_table :skills do |t|
+      t.string :name, unique: true
+      t.references :skillable, polymorphic: true, index: true
+      t.timestamps
+    end
+  end
+end

@@ -1,0 +1,12 @@
+class Vacancies < Activerecord::Migration
+  def change
+    create_table :vacancies do |t|
+      t.string :title
+      t.datetime :expired
+      t.integer :salary
+      t.string :contact
+      t.timestamps
+    end
+  end
+end
+
