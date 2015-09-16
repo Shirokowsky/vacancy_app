@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 4) do
     t.datetime "updated_at"
   end
 
+  add_index "employees", ["name"], name: "index_employees_on_name"
+
   create_table "skill_links", force: :cascade do |t|
     t.integer  "skill_id"
     t.integer  "skillable_id"
@@ -47,5 +49,7 @@ ActiveRecord::Schema.define(version: 4) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "vacancies", ["title"], name: "index_vacancies_on_title"
 
 end

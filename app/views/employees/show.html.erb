@@ -6,12 +6,9 @@
 <p>Status: <%= @employee.status %></p>
 <p>Salary: <%= @employee.salary %></p>
 <hr/>
-
-<%= render partial: 'skills/skill', collection: @employee.skills %>
-
+<%= render partial: 'skills/skill_green', collection: @employee.skills %>
 <hr/>
 <h3>Vacancies 100% match</h3>
 <%= render partial: 'vacancies/vacancy', collection: @full %>
-
 <h3>Parted</h3>
 <%= render partial: 'vacancies/vacancy', collection: @parted %>

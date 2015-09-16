@@ -1,10 +1,9 @@
 class SkillsController < ApplicationController
   before_action :set_skill, except: [:index, :new, :create]
-  #before_action :load_skills
   include Gotskills
 
   def index
-    @skills = Skill.includes(:skill_links).all
+    @skills = Skill.includes(:skill_links)
   end
 
   def new
@@ -13,23 +12,10 @@ class SkillsController < ApplicationController
 
   def create
     @skill = Skill.new(skill_params)
-    if @skill.save
-      respond_to do |format|
-        format.html{redirect_to :back, notice:'skill created'}
-      end
-    else
-      render :new
-    end
-  end
-
-  def edit
-
-  end
-
-  def destroy
-    @skill.destroy
+    @skill.save
     respond_to do |format|
-      format.html {redirect_to @skillable, notice:'skill killed'}
+      format.html{ redirect_to :back, notice:'skill created' }
+      format.js
     end
   end
 

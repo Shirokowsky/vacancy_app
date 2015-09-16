@@ -1,12 +1,12 @@
 <% title @vacancy.title %>
 <% menu 'edit', edit_vacancy_path %>
 
-<h1><%= @vacancy.title %> <small>Expired: <%= @vacancy.expired %></small></h1>
+<h1><%= @vacancy.title %> <small>Expired: <%= @vacancy.expired.to_s(:long) %></small></h1>
 <p>Salary: <%= @vacancy.salary %></p>
 <p>Contact: <%= @vacancy.contact %></p>
 
 <h3>Skills required</h3>
-<%= render partial: 'skills/skill', collection: @vacancy.skills %>
+<%= render partial: 'skills/skill_green', collection: @vacancy.skills %>
 <hr/>
 
 <h3>Employees 100% match</h3>

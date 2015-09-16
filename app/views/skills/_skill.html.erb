@@ -1,3 +1,7 @@
-<small class="skill">
-  <%= skill.name %>
-</small>
+<%
+  # FIX it doesn't sent correct checkbox yet
+  # OPTIMIZE to partial
+%>
+
+<% z = controller.controller_name == 'Vacancies' ? ('vacancy_skill_ids_' + skill.id.to_s) : ('employee_skill_ids_' + skill.id.to_s) %>
+<%= check_box_tag z, skill.id, true %><label for=<%z%>><%= skill.name %></label>

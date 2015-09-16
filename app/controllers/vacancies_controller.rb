@@ -1,7 +1,8 @@
 class VacanciesController < ApplicationController
-  before_action :set_vacancy, only: [:show, :edit, :destroy, :update, :destroy]
+  before_action :set_vacancy, only: [:show, :update, :destroy]
   include Gotskills
   include Gotaliens
+  include Checkphone
 
   def index
     @active = Vacancy.active.includes(:skills)
@@ -20,23 +21,31 @@ class VacanciesController < ApplicationController
 
   def create
     @vacancy= Vacancy.new(vacancy_params)
+    @vacancy.contact = check_phone(@vacancy.contact)
     @skill = Skill.new
-    respond_to do |format|
-      if @vacancy.save
-        format.html{ redirect_to @vacancy, notice: 'Vacancy created OK'}
-        format.json{ render :show }
-      else
-        format.html{ render :new}
+
+    if @vacancy.skills.size == 0
+      redirect_to :back, notice: 'Skills count cannot be zero'
+    else
+      respond_to do |format|
+        if @vacancy.save
+          format.html{ redirect_to @vacancy, notice: 'Vacancy created OK'}
+          format.json{ render :show }
+        else
+          format.html{ render :new}
+        end
       end
     end
   end
 
   def edit
+    @vacancy = Vacancy.includes(:skills).find(params[:id])
     @skill = Skill.new
   end
 
   def update
     @vacancy.skill_links.build.build_skill
+    @vacancy.contact = check_phone(@vacancy.contact)
     respond_to do |format|
       if @vacancy.update(vacancy_params)
         format.html{ redirect_to @vacancy, notice: 'Vacancy edited OK'}
