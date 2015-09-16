@@ -1,0 +1,6 @@
+<% title 'All employees' %>
+<% menu 'add new', new_employee_path %>
+
+<h1>Our employees</h1>
+
+<%= render partial: 'employee', collection: @employees %>

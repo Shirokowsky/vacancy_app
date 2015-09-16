@@ -7,6 +7,7 @@ class CreateVacancies < ActiveRecord::Migration
       t.string :contact, null: false
       t.timestamps
     end
+    add_index :vacancies, :title, :expired
   end
 end
 

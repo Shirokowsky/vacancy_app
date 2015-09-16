@@ -7,8 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav>
+    <ul>
+      <li><%= yield :nav %></li>
+    </ul>
+    <ul>
+      <li><%= yield :menu %></li>
+      <li><%= link_to 'all emp', employees_path %></li>
+      <li><%= link_to 'all vacancies', vacancies_path %></li>
+      <li><%= link_to 'all skills', skills_path %></li>
+    </ul>
+</nav>
 
-<%= yield %>
+<main>
+  <%= yield %>
+</main>
+<footer>
+  <%= yield :footer %>
+  <%= notice %>
+</footer>
 
 </body>
 </html>

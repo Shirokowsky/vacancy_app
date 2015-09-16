@@ -1,0 +1,10 @@
+<% title 'Vacancies' %>
+<% menu 'add new vacancy', new_vacancy_path %>
+
+<h1>Active vacancies</h1>
+
+<%= render partial: 'vacancy', collection: @vacancies %>
+<hr/>
+
+<h3>Expired vacancies</h3>
+<%= render partial: 'vacancy', collection: @expired %>

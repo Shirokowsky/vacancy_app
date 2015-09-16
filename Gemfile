@@ -28,16 +28,22 @@ gem 'russian'
 
 gem 'devise'
 
+#gem 'pg'
+#gem 'pg_search'
+
 group :development, :test do
   gem 'byebug'
   gem 'progress_bar'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'sqlite3'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.3'
   gem 'rubocop', require: false
+
+  gem 'better_errors'
+  gem 'awesome_print'
+  gem 'quiet_assets'
 end
 
 group :production do
-  gem 'thinking-sphinx'
 end

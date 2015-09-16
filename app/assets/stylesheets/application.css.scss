@@ -1,0 +1,145 @@
+/*
+  *= require normalize-rails
+  *= require_tree .
+  *= require_self
+*/
+
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic);
+$gray: #212426;
+$black: #212426;
+$green: #5cb85c;
+$darker-green: #4cae4c;
+
+body {
+  background-color: #e5e5e5;
+  color: $gray;
+  font-family: 'PT Sans';
+}
+
+nav {
+  position: fixed;
+  top:0; left: 0; right: 0;
+  background: $gray;
+  color: white;
+  z-index: 555;
+  padding: 1em;
+  border-bottom: 2px solid $black;
+  ul {
+    padding: 0;
+    margin: 0;
+    li{
+      list-style-type: none;
+      display: inline-block;
+    }
+  }
+  ul:nth-child(1) {
+    float: left;
+    font-weight: bolder;
+  }
+  ul:nth-child(2) {
+    float: right;
+  }
+  a {
+    color: white;
+    border-color: white;
+    &:hover{
+      background-color: rgba(255,255,255,0.2);
+    }
+  }
+  a.active{
+    background-color: $green;
+    border-color: $darker-green;
+    color: $black;
+  }
+}
+
+main {
+  position: relative;
+  padding: 1em 2em;
+  top: 50px;
+  width: 640px;
+  margin: auto;
+  background-color: white;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  //height: 50px;
+  text-align: center;
+}
+
+a, input[type='submit'] {
+  margin: 5px 0;
+  padding: 5px 10px;
+  border: 1px solid $gray;
+  color: $gray;
+  background-color: transparent;
+  text-decoration: none;
+  &:hover{
+    background-color: silver;
+  }
+}
+
+.block, form {
+  display: block;
+  position: relative;
+  margin: 0 1em 1em;
+  padding: 0 1em 2em;
+  border: 1px dashed transparent;
+  &:hover{
+    border: 1px dashed $gray;
+    .buttons {
+      opacity: 1;
+    }
+  }
+}
+
+.block {
+  .buttons {
+    position: absolute;
+    right: 0.5em;
+    bottom: 1em;
+    opacity: 0.5;
+  }
+}
+.skills {
+  display: block;
+  position: absolute;
+  top: 0; right: 0.5em;
+  padding: 1em 0;
+}
+
+.skill {
+  display: inline-block;
+  color: white;
+  background-color: #5cb85c;
+  border: 1px solid #4cae4c;
+  padding: 2px 10px;
+  margin: 2px;
+  border-radius: 5px;
+}
+
+form {
+  width: 600px;
+  margin: auto;
+  padding: 2em;
+  .field {
+    margin-bottom: 1em;
+    label {
+      display: inline-block;
+      width: 150px;
+      text-align: right;
+      margin-right: 10px;
+    }
+    input {
+      display: inline-block;
+      width: 250px;
+    }
+  }
+  .actions {
+    text-align: center;
+  }
+}

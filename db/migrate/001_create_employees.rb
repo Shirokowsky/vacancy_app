@@ -7,5 +7,6 @@ class CreateEmployees < ActiveRecord::Migration
       t.integer :salary, null: false, default: 0
       t.timestamps
     end
+    add_index :employees, :name
   end
 end

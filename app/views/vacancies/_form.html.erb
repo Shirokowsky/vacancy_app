@@ -1,0 +1,36 @@
+<%= form_for @vacancy do |f| %>
+    <% if @vacancy.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@vacancy.errors.count, 'error')%> prohibited this emp from being saved</h2>
+          <ul>
+            <%= @vacancy.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title, required: true, autofocus: true%>
+    </div>
+    <div class="field">
+      <%= f.label :contact %>
+      <%= f.text_field :contact %>
+    </div>
+    <div class="field">
+      <%= f.label :salary %>
+      <%= f.text_field :salary %>
+    </div>
+    <div class="field">
+      <%= f.label :expired %>
+      <%= f.datetime_select :expired, minute_step: 15 %>
+    </div>
+    <div class="field">
+    <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'OK'%>
+    </div>
+<% end %>

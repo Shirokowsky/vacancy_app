@@ -1,0 +1,17 @@
+<% title @vacancy.title %>
+<% menu 'edit', edit_vacancy_path %>
+
+<h1><%= @vacancy.title %> <small>Expired: <%= @vacancy.expired %></small></h1>
+<p>Salary: <%= @vacancy.salary %></p>
+<p>Contact: <%= @vacancy.contact %></p>
+
+<h3>Skills required</h3>
+<%= render partial: 'skills/skill', collection: @vacancy.skills %>
+<hr/>
+
+<h3>Employees 100% match</h3>
+<%= render partial: 'employees/employee', collection: @full %>
+<hr/>
+
+<h3>Parted</h3>
+<%= render partial: 'employees/employee', collection: @parted %>

@@ -1,0 +1,35 @@
+<%= form_for @employee do |f| %>
+    <% if @employee.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@employee.errors.count, 'error')%> prohibited this emp from being saved</h2>
+          <ul>
+            <%= @employee.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, required: true, autofocus: true%>
+    </div>
+    <div class="field">
+      <%= f.label :contact %>
+      <%= f.text_field :contact %>
+    </div>
+    <div class="field">
+      <%= f.label :salary %>
+      <%= f.text_field :salary %>
+    </div>
+    <div class="field">
+      <%= f.label :status %>
+      <%= f.check_box :status %>
+    </div>
+    <div class="field">
+      <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'OK'%>
+    </div>
+<% end %>

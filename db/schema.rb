@@ -11,32 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 3) do
+ActiveRecord::Schema.define(version: 4) do
 
   create_table "employees", force: :cascade do |t|
-    t.string   "name"
-    t.string   "contact"
-    t.boolean  "status"
-    t.integer  "salary"
+    t.string   "name",                      null: false
+    t.string   "contact",                   null: false
+    t.boolean  "status",     default: true, null: false
+    t.integer  "salary",     default: 0,    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "skills", force: :cascade do |t|
-    t.string   "name"
+  create_table "skill_links", force: :cascade do |t|
+    t.integer  "skill_id"
     t.integer  "skillable_id"
     t.string   "skillable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "skills", ["skillable_type", "skillable_id"], name: "index_skills_on_skillable_type_and_skillable_id"
+  add_index "skill_links", ["skillable_type", "skillable_id"], name: "index_skill_links_on_skillable_type_and_skillable_id"
+
+  create_table "skills", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "skill_links_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "vacancies", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",                  null: false
     t.datetime "expired"
-    t.integer  "salary"
-    t.string   "contact"
+    t.integer  "salary",     default: 0, null: false
+    t.string   "contact",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

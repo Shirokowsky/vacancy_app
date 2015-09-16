@@ -1,0 +1,21 @@
+<div class="block">
+  <h3><%= employee.name %></h3>
+  <b>Contact:</b> <i><%= employee.contact %></i>
+  <br/>
+  <b>Salary:</b><i><%= employee.salary %></i>
+  <br/>
+  <% if employee.skills %>
+    <small>Skills_count: <%= employee.skills.size %></small>
+      <br/>
+    <small>
+      <% employee.skills.each do |s| %>
+          <%= s.name %>
+      <% end %>
+    </small>
+  <% end %>
+
+  <div class="buttons">
+    <%= link_to 'show', employee %>
+    <%= link_to 'edit', edit_employee_path(employee) %>
+  </div>
+</div>
