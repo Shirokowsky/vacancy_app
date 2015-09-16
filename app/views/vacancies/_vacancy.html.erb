@@ -1,12 +1,8 @@
 <div class="block">
   <h3><%= vacancy.title %> <small>Expired: <%= vacancy.expired ? vacancy.expired.to_formatted_s(:long) : vacancy.expired %></small></h3>
-  <b>Contact:</b> <i><%= vacancy.contact %></i>
-  <br/>
   <b>Salary:</b><i><%= vacancy.salary %></i>
   <br/>
   <% if vacancy.skills %>
-  <small>Skills required count: <%= vacancy.skills.size %></small>
-      <br/>
   <small>
     <% vacancy.skills.each do |s|%>
         <%= s.name %>

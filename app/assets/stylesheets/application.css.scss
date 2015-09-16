@@ -5,10 +5,18 @@
 */
 
 @import url(https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic);
+@import url(https://fonts.googleapis.com/css?family=Berkshire+Swash);
 $gray: #212426;
 $black: #212426;
 $green: #5cb85c;
 $darker-green: #4cae4c;
+
+.trans {
+  transition: all 0.3s ease-out;
+  &:hover{
+    transition: all 0.3s ease-out;
+  }
+}
 
 body {
   background-color: #e5e5e5;
@@ -40,6 +48,7 @@ nav {
     float: right;
   }
   a {
+    @extend .trans;
     color: white;
     border-color: white;
     &:hover{
@@ -60,6 +69,7 @@ main {
   width: 640px;
   margin: auto;
   background-color: white;
+  min-height: 80vh;
 }
 
 footer {
@@ -67,11 +77,11 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  //height: 50px;
   text-align: center;
 }
 
 a, input[type='submit'] {
+  @extend .trans;
   margin: 5px 0;
   padding: 5px 10px;
   border: 1px solid $gray;
@@ -83,7 +93,16 @@ a, input[type='submit'] {
   }
 }
 
+.welcome {
+  text-align: center;
+  h1 {
+    font-family: 'Berkshire Swash', cursive;
+    border-bottom: 2px dashed $black;
+  }
+}
+
 .block, form {
+  @extend .trans;
   display: block;
   position: relative;
   margin: 0 1em 1em;

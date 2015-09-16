@@ -4,7 +4,7 @@ class VacanciesController < ApplicationController
   include Gotaliens
 
   def index
-    @vacancies = Vacancy.active.includes(:skills)
+    @active = Vacancy.active.includes(:skills)
     @expired = Vacancy.arch.includes(:skills)
   end
 

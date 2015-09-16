@@ -9,7 +9,10 @@ class EmployeesController < ApplicationController
 
   def show
     got_skills @employee
-    got_aliens @employee.skills, Vacancy.active.includes(:skills)
+    # with default_scope
+    # got_aliens @employee.skills, Vacancy.active.includes(:skills)
+    # w/o default_scope
+    got_aliens @employee.skills, Vacancy.active.includes(:skills).order(salary: :desc)
   end
 
   def new
@@ -24,7 +27,7 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(employee_params)
     @employee.contact = check_phone @employee.contact
-    @employee.status = @employee.status || true
+    @employee.status ||= false # OPTIMIZE
     @employee.salary = @employee.salary || 0
 
     respond_to do |format|

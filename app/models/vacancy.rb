@@ -4,8 +4,8 @@ class Vacancy < ActiveRecord::Base
   validates :title, :salary, :contact, presence: true
   validates :contact, email: true
 
-  #default_scope {where('expired > ?', Time.zone.now)}
-  default_scope {order(salary: :desc)}
+  # we can use this default scope, but default_scope can be sux
+  # default_scope {order(salary: :desc)}
 
   scope :active, -> {where('expired > ?', Time.zone.now)}
   scope :arch, -> {where('expired < ?', Time.zone.now)}
