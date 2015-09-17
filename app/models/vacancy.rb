@@ -1,5 +1,5 @@
 class Vacancy < ActiveRecord::Base
-  include Has_skills
+  include HasSkills
 
   validates :title, :salary, :contact, presence: true
   validates :contact, email: true

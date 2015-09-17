@@ -2,7 +2,6 @@ class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :update, :destroy]
   include Gotskills
   include Gotaliens
-  include Checkphone
 
   def index
     @employees = Employee.includes(:skills)
@@ -28,9 +27,9 @@ class EmployeesController < ApplicationController
 
   def create
     @employee = Employee.new(employee_params)
-    @employee.contact = check_phone(@employee.contact)
     @employee.status ||= false
     @employee.salary = @employee.salary || 0
+
     if @employee.skills.size == 0
       redirect_to :back, notice: 'Skills count cannot be zero'
     else
@@ -47,7 +46,6 @@ class EmployeesController < ApplicationController
 
   def update
     @employee.skill_links.build.build_skill
-    @employee.contact = check_phone(@employee.contact)
 
     respond_to do |format|
       if @employee.update(employee_params)

@@ -1,4 +1,4 @@
-module Has_skills
+module HasSkills
   def self.included(base)
     base.class_eval do
       has_many :skill_links, as: :skillable

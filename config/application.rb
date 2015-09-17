@@ -22,5 +22,11 @@ module BlueFox
     config.active_record.raise_in_transactional_callbacks = true
 
     config.autoload_paths += %W["#{config.root}/app/validators/"]
+
+    config.generators do |g|
+      g.test_framework  :rspec, fixture: true
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
+      g.factory_girl dir: 'spec/factories'
+    end
   end
 end

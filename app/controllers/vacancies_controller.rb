@@ -2,7 +2,6 @@ class VacanciesController < ApplicationController
   before_action :set_vacancy, only: [:show, :update, :destroy]
   include Gotskills
   include Gotaliens
-  include Checkphone
 
   def index
     @active = Vacancy.active.includes(:skills)
@@ -21,7 +20,7 @@ class VacanciesController < ApplicationController
 
   def create
     @vacancy= Vacancy.new(vacancy_params)
-    @vacancy.contact = check_phone(@vacancy.contact)
+
     @skill = Skill.new
 
     if @vacancy.skills.size == 0
@@ -45,7 +44,7 @@ class VacanciesController < ApplicationController
 
   def update
     @vacancy.skill_links.build.build_skill
-    @vacancy.contact = check_phone(@vacancy.contact)
+
     respond_to do |format|
       if @vacancy.update(vacancy_params)
         format.html{ redirect_to @vacancy, notice: 'Vacancy edited OK'}

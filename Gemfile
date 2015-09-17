@@ -29,9 +29,6 @@ gem 'russian'
 
 gem 'devise'
 
-#gem 'pg'
-#gem 'pg_search'
-
 group :development, :test do
   gem 'byebug'
   gem 'progress_bar'
@@ -39,6 +36,12 @@ group :development, :test do
   gem 'spring'
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.3'
+  gem 'factory_girl_rails'
+  gem 'ffaker'
+  gem 'ryba'
+
+  gem 'database_cleaner'
+
   gem 'rubocop', require: false
 
   gem 'better_errors'
@@ -47,4 +50,6 @@ group :development, :test do
 end
 
 group :production do
+  #gem 'pg'
+  #gem 'pg_search'
 end

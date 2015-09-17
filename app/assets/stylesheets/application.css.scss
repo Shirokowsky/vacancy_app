@@ -129,7 +129,7 @@ form {
   //width: 600px;
   margin: auto;
   padding: 2em;
-  .field {
+  .field, .field_with_errors {
     margin-bottom: 1em;
     label {
       display: inline-block;
@@ -145,6 +145,10 @@ form {
   .actions {
     text-align: center;
   }
+}
+.field_with_errors {
+  color: red;
+  display: inline;
 }
 
 // Style
@@ -216,4 +220,12 @@ a, input[type='submit'] {
   color: white;
   background-color: #5cb85c;
   border-color: #4cae4c;
+}
+
+#error_explanation {
+  text-align: center;
+  h2 {
+    color: silver;
+    margin: 0; padding: 0;
+  }
 }

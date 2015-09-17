@@ -1,5 +1,6 @@
 <%= form_for @vacancy do |f| %>
     <% if @vacancy.errors.any? %>
+        <% content_for :footer do %>
         <div id="error_explanation">
           <h2><%= pluralize(@vacancy.errors.count, 'error')%> prohibited this emp from being saved</h2>
           <ul>
@@ -8,6 +9,7 @@
             <% end %>
           </ul>
         </div>
+        <% end %>
     <% end %>
 
     <div class="field">

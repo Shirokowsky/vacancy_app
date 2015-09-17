@@ -14,7 +14,7 @@ class SkillsController < ApplicationController
     @skill = Skill.new(skill_params)
     @skill.save
     respond_to do |format|
-      format.html{ redirect_to :back, notice:'skill created' }
+      format.html { redirect_to skills_path, notice:'skill created' }
       format.js
     end
   end
