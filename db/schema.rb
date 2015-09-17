@@ -42,10 +42,10 @@ ActiveRecord::Schema.define(version: 4) do
   end
 
   create_table "vacancies", force: :cascade do |t|
-    t.string   "title",                  null: false
-    t.datetime "expired"
-    t.integer  "salary",     default: 0, null: false
-    t.string   "contact",                null: false
+    t.string   "title",                                      null: false
+    t.datetime "expired",    default: '2015-09-19 00:00:00'
+    t.integer  "salary",     default: 0,                     null: false
+    t.string   "contact",                                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

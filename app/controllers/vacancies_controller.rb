@@ -3,14 +3,19 @@ class VacanciesController < ApplicationController
   include Gotskills
   include Gotaliens
 
+  respond_to :html, :json
+
   def index
     @active = Vacancy.active.includes(:skills)
     @expired = Vacancy.arch.includes(:skills)
+    @all = @active + @expired
+    render json: @all
   end
 
   def show
     got_skills @vacancy
     got_aliens @vacancy.skills, Employee.active.includes(:skills)
+    render json: @vacancy
   end
 
   def new
@@ -31,7 +36,7 @@ class VacanciesController < ApplicationController
           format.html{ redirect_to @vacancy, notice: 'Vacancy created OK'}
           format.json{ render :show }
         else
-          format.html{ render :new}
+          format.html{ render :new }
         end
       end
     end
