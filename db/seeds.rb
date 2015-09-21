@@ -1,3 +1,6 @@
+#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.create(name: 'Emanuel', city: cities.first)
+
 skills = Skill.create([
   {name: 'smoke'},
   {name: 'learn'},
@@ -32,11 +35,7 @@ employees = Employee.create([
 
 vacancies = Vacancy.create([
     {title: 'ror dev', salary: 300, contact: 'test@test.ru'},
-    {title: 'php dev', salary: 100, contact: '1234567845'},
-    {title: 'go dev', salary: 200, contact: '6549874532'},
-    {title: 'typography', salary: 100, contact: '1234567845'},
-    {title: 'parking', salary: 220, contact: '6549874532'},
-    {title: 'kremlin', salary: 100, contact: '1234567845'},
-    {title: 'prog', salary: 220, contact: '6549874532'},
-    {title: 'c++ dev', salary: 330, contact: 'test@test.ru'}
+    {title: 'php dev', salary: 100, contact: 'test@test.ru'},
+    {title: 'go dev', salary: 200, contact: 'test@test.ru'},
+    {title: 'c++ dev', salary: 300, contact: 'test@test.ru'}
 ])
