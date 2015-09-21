@@ -151,6 +151,22 @@ form {
   display: inline;
 }
 
+.ang_block {
+  padding: 0;
+  li {
+    @extend .trans;
+    list-style-type: none;
+    margin: 5px 0;
+    border: 1px solid transparent;
+    padding: 1em;
+    &:hover{
+      cursor: pointer;
+      border-color: $green;
+      margin: 10px 0;
+    }
+  }
+}
+
 // Style
 
 body {
