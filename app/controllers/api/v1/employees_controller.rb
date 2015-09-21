@@ -1,21 +1,18 @@
-class EmployeesController < ApplicationController
+class Api::V1::EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :update, :destroy]
   include Gotskills
   include Gotaliens
-
-  respond_to :html, :json
+  respond_to :json
 
   def index
     @employees = Employee.includes(:skills)
-    respond_with(@employees)
+    respond_with @employees
   end
 
   def show
     got_skills @employee
-    # with default_scope
-    # got_aliens @employee.skills, Vacancy.active.includes(:skills)
-    # w/o default_scope
     got_aliens @employee.skills, Vacancy.active.includes(:skills).order(salary: :desc)
+    respond_with @employee
   end
 
   def new
@@ -32,6 +29,7 @@ class EmployeesController < ApplicationController
     @employee = Employee.new(employee_params)
     @employee.status ||= false
     @employee.salary = @employee.salary || 0
+#    respond_with :api, :v1, Lead.create(lead_params)
 
     if @employee.skills.size == 0
       redirect_to :back, notice: 'Skills count cannot be zero'
@@ -49,6 +47,7 @@ class EmployeesController < ApplicationController
 
   def update
     @employee.skill_links.build.build_skill
+    #    respond_with lead.update(lead_params)
 
     respond_to do |format|
       if @employee.update(employee_params)
@@ -61,9 +60,7 @@ class EmployeesController < ApplicationController
 
   def destroy
     @employee.destroy
-    respond_to do |format|
-      format.html{ redirect_to employees_path, notice: 'Employee killed' }
-    end
+#    respond_with lead.destroy
   end
 
   private

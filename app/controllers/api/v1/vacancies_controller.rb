@@ -1,22 +1,21 @@
-class VacanciesController < ApplicationController
+class Api::V1::VacanciesController < ApplicationController
   before_action :set_vacancy, only: [:show, :update, :destroy]
   include Gotskills
   include Gotaliens
 
-  respond_to :html, :json
+  respond_to :json
 
   def index
     @active = Vacancy.active.includes(:skills)
     @expired = Vacancy.arch.includes(:skills)
     @all = @active + @expired
-    respond_with(@active)
+    respond_with @all
   end
 
   def show
     got_skills @vacancy
     got_aliens @vacancy.skills, Employee.active.includes(:skills)
-    respond_with(@vacancy)
-    #render json: @vacancy
+    respond_with @vacancy
   end
 
   def new
@@ -26,7 +25,6 @@ class VacanciesController < ApplicationController
 
   def create
     @vacancy= Vacancy.new(vacancy_params)
-
     @skill = Skill.new
 
     if @vacancy.skills.size == 0
@@ -57,13 +55,6 @@ class VacanciesController < ApplicationController
       else
         format.html{ render :edit, notice: 'Vacancy not edited'}
       end
-    end
-  end
-
-  def destroy
-    @vacancy.destroy
-    respond_to do |format|
-      format.html{ redirect_to vacancies_path, notice: 'Vacancy killed' }
     end
   end
 
