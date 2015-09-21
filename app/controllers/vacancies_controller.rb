@@ -9,13 +9,13 @@ class VacanciesController < ApplicationController
     @active = Vacancy.active.includes(:skills)
     @expired = Vacancy.arch.includes(:skills)
     @all = @active + @expired
-    render json: @all
+    respond_with(@active)
   end
 
   def show
     got_skills @vacancy
     got_aliens @vacancy.skills, Employee.active.includes(:skills)
-    render json: @vacancy
+    respond_with(@vacancy)
   end
 
   def new
