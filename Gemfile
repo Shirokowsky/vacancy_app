@@ -29,10 +29,14 @@ gem 'normalize-rails'
 gem 'autoprefixer-rails'
 gem 'russian'
 
-gem 'angular-rails'
-
 # if required
 gem 'devise'
+
+# api
+gem 'rails-api'
+gem 'active_model_serializers'
+gem 'rack-cors', :require => 'rack/cors'
+
 
 group :development, :test do
   gem 'byebug'
