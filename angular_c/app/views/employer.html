@@ -1,0 +1,18 @@
+<div class='panel panel-default'>
+  <div class="panel-heading">
+    <h1>{{employee.name}}</h1>
+  </div>
+  <div class="panel-body">
+    <div class='pull-right'>
+      <a href='#'>Add skill</a>
+    </div>
+  <h3>Contact: {{employee.contact}}</h3>
+  <p>Looking for job? {{employee.status}}</p>
+  <p>Want {{employee.salary}} dollars</p>
+  <small>{{employee.id}}</small>
+  <h2>Skills</h2>
+  <ul>
+    <li ng-repeat='skill in employee.skills'>{{skill.id}}</li>
+  </ul>
+  </div>
+</div>

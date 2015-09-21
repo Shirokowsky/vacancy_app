@@ -1,0 +1,19 @@
+<div class='panel panel-default'>
+  <div class="panel-heading">
+    <h1>{{vacancy.title}}</h1>
+  </div>
+  <div class="panel-body">
+    <div class='pull-right'>
+      <a href='#'>Add skill</a>
+    </div>
+  <h3>Contact: {{vacancy.contact}}</h3>
+  <p>Expired? {{vacancy.expired}}</p>
+  <p>Salary: {{vacancy.salary}}</p>
+  <small>{{vacancy.id}}</small>
+
+  <h2>Skills</h2>
+  <ul>
+    <li ng-repeat='skill in vacancy.skills'>{{skill.id}}</li>
+  </ul>
+  </div>
+</div>
