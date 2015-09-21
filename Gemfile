@@ -33,9 +33,9 @@ gem 'russian'
 gem 'devise'
 
 # api
-gem 'rails-api'
-gem 'active_model_serializers'
-gem 'rack-cors', :require => 'rack/cors'
+#gem 'rails-api' # disabled becouse of no routes bug
+#gem 'active_model_serializers'
+#gem 'rack-cors', :require => 'rack/cors'
 
 
 group :development, :test do
